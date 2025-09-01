@@ -10,13 +10,27 @@ function Square({valor, onSquareClick}){
   );
 }
 
+
+
 export default function Tabuleiro(){
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const[xIsNext,setXIsNext] = useState(true);
 
   function handleClick(i){
+    if(squares[i])// Se squares[i] é null o if não executa o return!!!
+      return;
+      // O handleClick continua a execução pois o return não foi executado, o squares[i] era NULL!!
+
     const nextSquares = squares.slice();
-    nextSquares[i] = "X";
+    if(xIsNext){
+      nextSquares[i] = "X";
+    }
+    else{
+      nextSquares[i] = "O";
+    }
+    
     setSquares(nextSquares);
+    setXIsNext(!xIsNext);// ! inverte a variavel booleana (true ou false)
   }
 
   return(
