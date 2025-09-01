@@ -17,8 +17,10 @@ export default function Tabuleiro(){
   const[xIsNext,setXIsNext] = useState(true);
 
   function handleClick(i){
-    if(squares[i])// Se squares[i] é null o if não executa o return!!!
-      return;
+
+    if(squares[i] || haVencedor(squares)){ // Se squares[i] é null o if não executa o return!!!
+       return 
+      };
       // O handleClick continua a execução pois o return não foi executado, o squares[i] era NULL!!
 
     const nextSquares = squares.slice();
@@ -30,26 +32,53 @@ export default function Tabuleiro(){
     }
     
     setSquares(nextSquares);
-    setXIsNext(!xIsNext);// ! inverte a variavel booleana (true ou false)
+    setXIsNext(!xIsNext); // ! inverte a variavel booleana (true ou false)
   }
 
   return(
     <div>
-      <div>
-        <Square valor={squares[0]} onSquareClick={()=>{handleClick(0)}}/>
-        <Square valor={squares[1]} onSquareClick={()=>{handleClick(1)}}/>
-        <Square valor={squares[2]} onSquareClick={()=>{handleClick(2)}}/>
+      <div className='ht1'>
+        <Square className='sq0'valor={squares[0]} onSquareClick={()=>{handleClick(0)}}/>
+        <Square className='sq1'valor={squares[1]} onSquareClick={()=>{handleClick(1)}}/>
+        <Square className='sq2'valor={squares[2]} onSquareClick={()=>{handleClick(2)}}/>
       </div>
-      <div>
-        <Square valor={squares[3]} onSquareClick={()=>{handleClick(3)}}/>
-        <Square valor={squares[4]} onSquareClick={()=>{handleClick(4)}}/>
-        <Square valor={squares[5]} onSquareClick={()=>{handleClick(5)}}/>
+      <div className='ht2'>
+        <Square className='sq3'valor={squares[3]} onSquareClick={()=>{handleClick(3)}}/>
+        <Square className='sq4'valor={squares[4]} onSquareClick={()=>{handleClick(4)}}/>
+        <Square className='sq5'valor={squares[5]} onSquareClick={()=>{handleClick(5)}}/>
       </div>
-      <div>
-        <Square valor={squares[6]} onSquareClick={()=>{handleClick(6)}}/>
-        <Square valor={squares[7]} onSquareClick={()=>{handleClick(7)}}/>
-        <Square valor={squares[8]} onSquareClick={()=>{handleClick(8)}}/>
+      <div className='ht3'>
+        <Square className='sq6' valor={squares[6]} onSquareClick={()=>{handleClick(6)}}/>
+        <Square className='sq7'valor={squares[7]} onSquareClick={()=>{handleClick(7)}}/>
+        <Square className='sq8'valor={squares[8]} onSquareClick={()=>{handleClick(8)}}/>
       </div>
     </div>
   );
+}
+
+function haVencedor(square){
+  if('ht1' === true){
+    alert('Parabéns você ganhou');
+  }
+  else if('ht2' === true){
+    alert('Parabéns você ganhou');
+  }
+  else if('ht3' === true){
+    alert('Parabéns você ganhou');
+  }
+  else if('sq0' && 'sq0' === 'sq3' && 'sq3' === 'sq6'){
+    alert('Parabéns você ganhou');
+  }
+  else if('sq1' && 'sq1' === 'sq4' && 'sq4' === 'sq7'){
+    alert('Parabéns você ganhou');
+  }
+  else if('sq2' && 'sq2' === 'sq5' && 'sq5' === 'sq8'){
+    alert('Parabéns você ganhou');
+  }
+  else if('sq0' && 'sq0' === 'sq4' && 'sq4' === 'sq8'){
+    alert('Parabéns você ganhou');
+  }
+  else if('sq2' && 'sq2' === 'sq4' && 'sq4' === 'sq6'){
+    alert('Parabéns você ganhou');
+  }
 }
