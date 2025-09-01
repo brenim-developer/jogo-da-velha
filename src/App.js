@@ -38,12 +38,12 @@ export default function Tabuleiro(){
   return(
     <div>
       <div className='ht1'>
-        <Square className='sq0'valor={squares[0]} onSquareClick={()=>{handleClick(0)}}/>
-        <Square className='sq1'valor={squares[1]} onSquareClick={()=>{handleClick(1)}}/>
-        <Square className='sq2'valor={squares[2]} onSquareClick={()=>{handleClick(2)}}/>
+        <Square valor={squares[0]} onSquareClick={()=>{handleClick(0)}}/>
+        <Square valor={squares[1]} onSquareClick={()=>{handleClick(1)}}/>
+        <Square valor={squares[2]} onSquareClick={()=>{handleClick(2)}}/>
       </div>
       <div className='ht2'>
-        <Square className='sq3'valor={squares[3]} onSquareClick={()=>{handleClick(3)}}/>
+        <Square valor={squares[3]} onSquareClick={()=>{handleClick(3)}}/>
         <Square className='sq4'valor={squares[4]} onSquareClick={()=>{handleClick(4)}}/>
         <Square className='sq5'valor={squares[5]} onSquareClick={()=>{handleClick(5)}}/>
       </div>
@@ -56,7 +56,7 @@ export default function Tabuleiro(){
   );
 }
 
-function haVencedor(square){
+function haVencedor(squares){
   if('ht1' === true){
     alert('Parabéns você ganhou');
   }
@@ -66,19 +66,19 @@ function haVencedor(square){
   else if('ht3' === true){
     alert('Parabéns você ganhou');
   }
-  else if('sq0' && 'sq0' === 'sq3' && 'sq3' === 'sq6'){
+  else if(squares[0] && squares[0] === squares[3] && squares[3] === squares[6]){
     alert('Parabéns você ganhou');
   }
-  else if('sq1' && 'sq1' === 'sq4' && 'sq4' === 'sq7'){
+  else if(squares[1] && squares[1] === squares[4] && squares[4] === squares[7]){
     alert('Parabéns você ganhou');
   }
-  else if('sq2' && 'sq2' === 'sq5' && 'sq5' === 'sq8'){
+  else if(squares[2] && squares[2] === squares[5] && squares[5] === squares[8]){
     alert('Parabéns você ganhou');
   }
-  else if('sq0' && 'sq0' === 'sq4' && 'sq4' === 'sq8'){
+  else if(squares[0] && squares[0] === squares[4] && squares[4] === squares[8]){
     alert('Parabéns você ganhou');
   }
-  else if('sq2' && 'sq2' === 'sq4' && 'sq4' === 'sq6'){
+  else if(squares[2] && squares[2] === squares[4] && squares[4] === squares[6]){
     alert('Parabéns você ganhou');
   }
 }
