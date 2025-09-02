@@ -10,8 +10,6 @@ function Square({valor, onSquareClick}){
   function handleClick(i){
 
     if(squares[i] || haVencedor(squares)){ // Se squares[i] é null o if não executa o return!!!
-      const vitoria = haVencedor(squares)
-      document.getElementById('alertaP').innerHTML = "Parabéns! O " + vitoria + " ganhou."
        return 
       };
       // O handleClick continua a execução pois o return não foi executado, o squares[i] era NULL!!
@@ -30,10 +28,10 @@ function Square({valor, onSquareClick}){
   const vencedor = haVencedor(squares);
   let status;
   if(vencedor){
-    status = "Vencedor" + vencedor;
+    status = "Vencedor " + vencedor;
   }
   else{
-    status = "Próximo a jogar:" + (xIsNext ? "X" : "O")
+    status = "Próximo a jogar: " + (xIsNext ? "X" : "O")
   }
 
   return(
@@ -82,7 +80,7 @@ function Square({valor, onSquareClick}){
   const moves = history.map((squares,move) => {
     let description;
     if (move >0) {
-      description = "Vai para o movimento #" +move;
+      description = "Vai para o movimento #" + move;
     }else{
       description = "Vai para o inicio do jogo!"
     }
